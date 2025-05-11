@@ -5,11 +5,12 @@ import axios from 'axios';
 import Home from './pages/Home';
 import StudentLogin from './pages/student/StudentLogin';
 import StudentRegister from './pages/student/StudentRegister';
-import ClubLogin from './pages/club/ClubLogin';
-import ClubRegister from './pages/club/ClubRegister';
+import AdminLogin from './pages/Admin/AdminLogin';
+import AdminRegister from './pages/Admin/AdminRegister';
 import StudentHome from './pages/student/StudentHome';
-import ClubHome from './pages/club/ClubHome';
-import AdminDashboard from './pages/admin/AdminDashboard';
+import StudentProfileSection from './pages/student/StudentProfileSection';
+import StudentProfileEditSection from './pages/student/StudentProfileEditSection';
+import StudentPasswordEditSection from './pages/student/StudentPasswordEditSection';
 import NotFound from './pages/NotFound';
 
 
@@ -33,30 +34,22 @@ export default function App() {
         {/* Student Auth */}
         <Route path="/student/login" element={<StudentLogin />} />
         <Route path="/student/register" element={<StudentRegister />} />
+        <Route path="/StudentProfileSection" element={<StudentProfileSection />} />
+        <Route path="/StudentProfileEditSection" element={<StudentProfileEditSection/>} />
+        <Route path="/StudentPasswordEditSection" element={<StudentPasswordEditSection/>} />
 
-        {/* Club Auth */}
-        <Route path="/club/login" element={<ClubLogin />} />
-        <Route path="/club/register" element={<ClubRegister />} />
+
+
+
+        {/* Admin Auth */}
+        <Route path="/Admin/login" element={<AdminLogin />} />
+        <Route path="/Admin/register" element={<AdminRegister />} />
 
         {/* Redirect based on role */}
         <Route
           path="/student/home"
           element={
             <StudentHome /> 
-          }
-        />
-
-        <Route
-          path="/club/home"
-          element={
-            <ClubHome /> 
-          }
-        />
-
-        <Route
-          path="/admin"
-          element={
-            <AdminDashboard /> 
           }
         />
   

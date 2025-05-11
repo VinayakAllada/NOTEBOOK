@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, Menu, X, Bell, Moon, Sun } from "lucide-react";
+import { Search, Menu, X, CircleUserRound , Moon, Sun } from "lucide-react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import StudentProfileSection from "./StudentProfileSection.jsx";
 
 const StudentHome = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -75,6 +76,10 @@ const StudentHome = () => {
     fetchData();
   }, []);
 
+  const goToProfileSection = () => {
+    useNavigate("/StudentProfileSection");
+  }
+
   return (
     <div className={`flex h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
       {/* Sidebar */}
@@ -125,9 +130,9 @@ const StudentHome = () => {
             </div>
 
             {/* Notification */}
-            <div className="relative">
-              <Bell className="cursor-pointer" />
-            </div>
+              <button onClick={ ()=> navigate("/StudentProfileSection")} ><CircleUserRound/></button>
+              
+            
 
             {/* Theme Toggle */}
             <button onClick={toggleTheme}>
