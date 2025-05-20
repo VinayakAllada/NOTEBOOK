@@ -38,39 +38,15 @@ const StudentRegister = () => {
     setImagePreview(URL.createObjectURL(file));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Check if passwords match
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords do not match!");
-      return;
-    }
-
-    try {
-      const data = new FormData();
-      data.append("name", formData.name);
-      data.append("password", formData.password);
-      data.append("email", formData.email);
-      data.append("branch", formData.branch);
-      if (image) {
-        data.append("profilepic", image); // Append image file
-      }
-
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/student/register",
-        data,
-        { withCredentials: true } // Send cookies for session
-      );
-
-      toast.success("Registered successfully!");
-      navigate("/student/home");
-    } catch (error) {
-      toast.error(
-        error.response?.data?.message || "Registration failed. Try again."
-      );
-    }
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // Simulate API call delay
+  setTimeout(() => {
+    // You can also log formData and image here if you want to see the values
+    toast.success("Student registered successfully! ");
+    navigate("/mainpage");
+  }, 1000);
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -162,7 +138,6 @@ const StudentRegister = () => {
         <button
           type="submit"
           className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg"
-          onClick={() => navigate('Main')}
         >
           Register
         </button>

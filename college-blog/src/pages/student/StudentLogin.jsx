@@ -8,25 +8,19 @@ export default function StudentLogin() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const loginHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/student/login", { email, password }, { withCredentials: true });
-
-      if (res.data.isAdmin) {
-        navigate("/admin");
-      } else {
-        toast.success("Logged in successfully");
-        navigate("/student/home");
-      }
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Login failed");
-    }
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // Simulate API call delay
+  setTimeout(() => {
+    // You can also log formData and image here if you want to see the values
+    toast.success("Student logged in successfully! ");
+    navigate("/mainpage");
+  }, 1000);
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-50 px-4">
-      <form onSubmit={loginHandler} className="bg-white shadow-lg p-8 rounded-xl w-full max-w-md">
+      <form onSubmit={handleSubmit} className="bg-white shadow-lg p-8 rounded-xl w-full max-w-md">
         <h2 className="text-2xl font-semibold text-center mb-6 text-blue-700">Student Login</h2>
 
         <input
@@ -47,7 +41,10 @@ export default function StudentLogin() {
           required
         />
 
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+        <button
+         type="submit"
+         className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+        >
           Login
         </button>
 

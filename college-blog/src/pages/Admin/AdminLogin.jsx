@@ -8,21 +8,15 @@ const ClubLogin = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleClubLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post(
-        "http://localhost:5000/api/auth/club/login",
-        { name, password },
-        { withCredentials: true }
-      );
-
-      toast.success("Club Logged In!");
-      navigate("/club/home");
-    } catch (err) {
-      toast.error(err.response?.data?.message || "Login Failed");
-    }
-  };
+  const handleClubLogin = (e) => {
+  e.preventDefault();
+  // Simulate API call delay
+  setTimeout(() => {
+    // You can also log formData and image here if you want to see the values
+    toast.success("Admin registered successfully!");
+    navigate("/mainpage");
+  }, 1000);
+};
 
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-center px-4">
@@ -53,6 +47,7 @@ const ClubLogin = () => {
         <button
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md"
+          onClick={() => navigate('/mainpage')}
         >
           Login
         </button>
